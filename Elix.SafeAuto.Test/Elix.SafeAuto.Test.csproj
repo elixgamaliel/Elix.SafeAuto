@@ -1,0 +1,54 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <SpecFlowObsoleteCodeBehindFiles Remove="Features\DriveAPI - Copy.feature.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    <PackageReference Include="Moq" Version="4.16.1" />
+    <PackageReference Include="SpecFlow.Plus.LivingDocPlugin" Version="3.7.10" />
+
+    
+    <PackageReference Include="SpecRun.SpecFlow" Version="3.7.3" />
+    
+
+    
+
+    
+
+    
+
+    
+    <PackageReference Include="FluentAssertions" Version="5.10.3" />
+    
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Drivers\" />
+    <Folder Include="Hooks\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Elix.SafeAuto.Api\Elix.SafeAuto.Api.csproj" />
+    <ProjectReference Include="..\Elix.SafeAuto.Application\Elix.SafeAuto.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Features\DriveService.feature.cs">
+      <DependentUpon>DriveService.feature</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <SpecFlowFeatureFiles Update="Features\DriveService.feature">
+      <Visible>$(UsingMicrosoftNETSdk)</Visible>
+      <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
+    </SpecFlowFeatureFiles>
+  </ItemGroup>
+
+</Project>
